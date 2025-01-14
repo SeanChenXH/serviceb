@@ -24,9 +24,9 @@ jobs:
         with:
           ref: main
           token: ${{ secrets.PAT_TOKEN }}
-          repo: SeanChenXH/servicea
+          repo: servicea
           workflow_inputs: '{ "imageNumber": "32" }'
-          owner: repository-owner
+          owner: SeanChenXH
           workflow: blank.yml
       - name: Await Run ID ${{ steps.return_dispatch.outputs.run_id }}
         uses: Codex-/await-remote-run@v1.0.0
