@@ -19,12 +19,12 @@ jobs:
       #     event-type: my-event # 必须是 workflow_dispatch
       #     client-payload: '{"inputs": {"imageNumber": "42"}}' # 传递参数
       - name: Dispatch an action and get the run ID
-        uses: codex-/return-dispatch@v1
+        uses: codex-/return-dispatch@v2
         id: return_dispatch
         with:
           token: ${{ secrets.PAT_TOKEN }}
           repo: SeanChenXH/servicea
-          workflow_inputs: '{"imageNumber": "42"}' # 传递参数
+          workflow_inputs: '{ "imageNumber": "32" }'
           owner: repository-owner
           workflow: blank.yml
       - name: Await Run ID ${{ steps.return_dispatch.outputs.run_id }}
