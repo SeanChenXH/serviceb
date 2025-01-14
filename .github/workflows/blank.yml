@@ -22,6 +22,7 @@ jobs:
         uses: codex-/return-dispatch@v2
         id: return_dispatch
         with:
+          ref: main
           token: ${{ secrets.PAT_TOKEN }}
           repo: SeanChenXH/servicea
           workflow_inputs: '{ "imageNumber": "32" }'
