@@ -12,9 +12,9 @@ jobs:
 
     steps:
       - name: Trigger Service A Dispatch
-        uses: peter-evans/repository-dispatch@v2
+        uses: peter-evans/repository-dispatch@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }} 
+          token: ${{ secrets.PAT_TOKEN }} 
           repository: SeanChenXH/servicea # Service A 仓库路径
-          event-type: workflow_dispatch # 必须是 workflow_dispatch
+          event-type: my-event # 必须是 workflow_dispatch
           client-payload: '{"inputs": {"imageNumber": "42"}}' # 传递参数
