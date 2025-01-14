@@ -28,6 +28,7 @@ jobs:
           workflow_inputs: '{ "imageNumber": "32" }'
           owner: SeanChenXH
           workflow: blank.yml
+          distinct_id: 42
       - name: Await Run ID ${{ steps.return_dispatch.outputs.run_id }}
         uses: Codex-/await-remote-run@v1.0.0
         with:
