@@ -24,6 +24,7 @@ jobs:
         with:
           token: ${{ secrets.PAT_TOKEN }}
           repo: SeanChenXH/servicea
+          workflow_inputs: '{"imageNumber": "42"}' # 传递参数
           owner: repository-owner
           workflow: blank.yml
       - name: Await Run ID ${{ steps.return_dispatch.outputs.run_id }}
