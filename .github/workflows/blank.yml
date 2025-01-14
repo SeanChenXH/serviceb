@@ -28,7 +28,7 @@ jobs:
           workflow_inputs: '{ "distinct_id": "320" }'
           owner: SeanChenXH
           workflow: blank.yml
-          distinct_id: 42
+          distinct_id: 420
       - name: Await Run ID ${{ steps.return_dispatch.outputs.run_id }}
         uses: Codex-/await-remote-run@v1.0.0
         with:
