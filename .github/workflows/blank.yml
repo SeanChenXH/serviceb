@@ -11,10 +11,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Trigger Service A Dispatch
-        uses: peter-evans/repository-dispatch@v3
+      # - name: Trigger Service A Dispatch
+      #   uses: peter-evans/repository-dispatch@v3
+      #   with:
+      #     token: ${{ secrets.PAT_TOKEN }} 
+      #     repository: SeanChenXH/servicea # Service A 仓库路径
+      #     event-type: my-event # 必须是 workflow_dispatch
+      #     client-payload: '{"inputs": {"imageNumber": "42"}}' # 传递参数
+      - name: Dispatch an action and get the run ID
+        uses: codex-/return-dispatch@v1
+        id: return_dispatch
         with:
-          token: ${{ secrets.PAT_TOKEN }} 
-          repository: SeanChenXH/servicea # Service A 仓库路径
-          event-type: my-event # 必须是 workflow_dispatch
-          client-payload: '{"inputs": {"imageNumber": "42"}}' # 传递参数
+          token: ${{ secrets.PAT_TOKEN }}
+          repo: SeanChenXH/servicea
+          owner: repository-owner
+          workflow: blank.yml
+      - name: Await Run ID ${{ steps.return_dispatch.outputs.run_id }}
+        uses: Codex-/await-remote-run@v1.0.0
+        with:
+          token: ${{ secrets.PAT_TOKEN }}
+          repo: SeanChenXH/servicea
+          owner: codex-
+          run_id: ${{ steps.return_dispatch.outputs.run_id }}
+          run_timeout_seconds: 300 # Optional
+          poll_interval_ms: 5000 #
