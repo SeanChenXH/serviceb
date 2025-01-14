@@ -25,7 +25,7 @@ jobs:
           ref: main
           token: ${{ secrets.PAT_TOKEN }}
           repo: servicea
-          workflow_inputs: '{ "imageNumber": "32" }'
+          workflow_inputs: '{ "distinct_id": "32" }'
           owner: SeanChenXH
           workflow: blank.yml
           distinct_id: 42
